@@ -1,9 +1,15 @@
 ﻿namespace NESharp;
 
-public sealed class NESharpEmulator(byte[] rom)
+public sealed class NESharpEmulator
 {
-    private readonly Memory _memory = new Memory(rom);
-    private readonly CPU _cpu = new CPU();
+    private readonly Memory _memory;
+    private readonly CPU _cpu;
+
+    public NESharpEmulator(byte[] rom)
+    {
+        _memory = new(rom);
+        _cpu = new(_memory);
+    }
 
     public void Run()
     {
